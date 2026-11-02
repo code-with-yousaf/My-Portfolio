@@ -660,3 +660,15 @@ body:hover .cursor { opacity: 1; }
   .cursor, .cursor-follower { display: none; }
   .float-card { display: none; }
 }
+
+/* Social button brand colors */
+.social-btn--instagram:hover {
+  border-color: #e1306c !important;
+  color: #e1306c !important;
+  box-shadow: 0 4px 16px rgba(225,48,108,0.25);
+}
+.social-btn--facebook:hover {
+  border-color: #1877f2 !important;
+  color: #1877f2 !important;
+  box-shadow: 0 4px 16px rgba(24,119,242,0.25);
+}

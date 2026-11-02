@@ -106,19 +106,9 @@
         </div>
       </form>
     </div>
-  </div>
-
-  <!-- PDF VIEWER MODAL -->
-  <div class="modal-overlay" id="view-overlay">
-    <div class="modal pdf-view-modal" id="view-modal">
-      <div class="pdf-view-header">
-        <div class="pdf-view-title" id="pdf-view-title"></div>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <a class="cert-action-btn view-btn" id="pdf-download-btn" download style="text-decoration:none;">⬇ Download</a>
-          <button class="modal-close" id="view-close" aria-label="Close">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-        </div>
+  </div>        <button class="modal-close" id="view-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
       <div class="pdf-iframe-wrap">
         <iframe id="pdf-iframe" title="Certificate PDF" frameborder="0"></iframe>
@@ -126,6 +116,25 @@
     </div>
   </div>
 
+  <!-- CERTIFICATE LIGHTBOX (canvas based, no toolbar) -->
+  <div class="cert-lightbox" id="cert-lightbox">
+    <div class="cert-lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="cert-lightbox-box">
+      <div class="cert-lightbox-header">
+        <span class="cert-lightbox-title" id="lightbox-title"></span>
+        <button class="cert-lightbox-close" id="lightbox-close" aria-label="Close">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="cert-lightbox-body">
+        <canvas id="cert-canvas"></canvas>
+        <div class="cert-lightbox-loading" id="lightbox-loading">
+          <div class="lb-spinner"></div>
+          <span>Loading certificate...</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="footer" style="margin-top:80px;">
     <div class="footer-inner">
       <div class="footer-brand">MYK<span class="accent">.</span></div>
@@ -142,4 +151,7 @@
   <script src="certificates.js"></script>
 </body>
 </html>
+
+
+
 
