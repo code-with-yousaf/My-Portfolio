@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificates | Muhammad Yousaf Khan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="certificates.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a class="nav-brand" href="index.html">MYK<span class="accent">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#hero" class="nav-link">Home</a></li>
+      <li><a href="index.html#about" class="nav-link">About</a></li>
+      <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+      <li><a href="certificates.html" class="nav-link active">Certificates</a></li>
+      <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="index.html#about" class="mobile-link">About</a></li>
+      <li><a href="index.html#skills" class="mobile-link">Skills</a></li>
+      <li><a href="index.html#projects" class="mobile-link">Projects</a></li>
+      <li><a href="certificates.html" class="mobile-link">Certificates</a></li>
+      <li><a href="index.html#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero -->
+  <section class="cert-hero">
+    <div class="cert-hero-inner">
+      <span class="section-tag">My Achievements</span>
+      <h1 class="section-title" style="margin-top:12px;">My <span class="gradient-text">Certificates</span></h1>
+      <p style="color:var(--text-secondary);margin-top:12px;max-width:500px;margin-inline:auto;">
+        Add and display your PDF certificates here.
+      </p>
+      <button class="btn-primary" id="open-modal-btn" style="margin-top:28px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Certificate
+      </button>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <main class="cert-main">
+    <div class="cert-grid" id="cert-grid"></div>
+    <div class="cert-empty" id="cert-empty">
+      <div class="empty-icon">🏆</div>
+      <h3>No certificates added yet</h3>
+      <p>Click "Add Certificate" to upload your first PDF!</p>
+    </div>
+  </main>
+
+  <!-- ADD / EDIT MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Certificate</h2>
+        <button class="modal-close" id="modal-close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="cert-form" novalidate>
+
+        <!-- Title only -->
+        <div class="form-group">
+          <label for="cert-title">Certificate Title *</label>
+          <input type="text" id="cert-title" placeholder="e.g. React Developer Certification" required />
+        </div>
+
+        <!-- PDF Upload -->
+        <div class="form-group">
+          <label>Certificate PDF *</label>
+          <div class="pdf-drop-zone" id="pdf-drop-zone">
+            <div class="pdf-icon">📄</div>
+            <p class="pdf-drop-title">Drag your PDF here <span>or click to browse</span></p>
+            <p class="pdf-drop-hint">PDF only • Max 10MB</p>
+            <input type="file" id="cert-pdf" accept=".pdf" style="display:none" />
+          </div>
+          <div class="pdf-selected" id="pdf-selected">
+            <span class="pdf-sel-icon">📄</span>
+            <span id="pdf-sel-name"></span>
+            <button type="button" class="pdf-remove" id="pdf-remove" aria-label="Remove">✕</button>
+          </div>
+          <p class="pdf-edit-note" id="pdf-edit-note">✓ PDF already uploaded — select a new one or keep existing</p>
+        </div>
+
+        <p class="form-error" id="form-error"></p>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary">
+            <span id="save-btn-text">Save Certificate</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PDF VIEWER MODAL -->
+  <div class="modal-overlay" id="view-overlay">
+    <div class="modal pdf-view-modal" id="view-modal">
+      <div class="pdf-view-header">
+        <div class="pdf-view-title" id="pdf-view-title"></div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a class="cert-action-btn view-btn" id="pdf-download-btn" download style="text-decoration:none;">⬇ Download</a>
+          <button class="modal-close" id="view-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="pdf-iframe-wrap">
+        <iframe id="pdf-iframe" title="Certificate PDF" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="margin-top:80px;">
+    <div class="footer-inner">
+      <div class="footer-brand">MYK<span class="accent">.</span></div>
+      <p class="footer-copy">&copy; 2026 Muhammad Yousaf Khan. Built with passion in Quetta, Pakistan.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>if(typeof pdfjsLib!=="undefined"){pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";}</script>
+  <script src="script.js"></script>
+  <script src="certificates.js"></script>
+</body>
+</html>
+

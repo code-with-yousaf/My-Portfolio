@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Yousaf Khan | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">MYK<span class="accent">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#hero" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#hero" class="mobile-link">Home</a></li>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#skills" class="mobile-link">Skills</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+      <li><a href="certificates.html" class="mobile-link">Certificates</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for work
+      </div>
+      <h1 class="hero-title">
+        <span class="line-1">Muhammad</span>
+        <span class="line-2">Yousaf <span class="gradient-text">Khan</span></span>
+      </h1>
+      <p class="hero-subtitle">Full-Stack Developer &amp; Tech Enthusiast</p>
+      <p class="hero-location">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Quetta, Pakistan
+      </p>
+      <p class="hero-desc">Bridging hardware &amp; software — from modern web apps to complex technical systems.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Let's Talk</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Years Exp.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="30">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Projects Done</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Tech Stacks</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <div class="avatar-initials">MYK</div>
+        </div>
+        <svg class="ring-svg" viewBox="0 0 300 300">
+          <circle cx="150" cy="150" r="140" stroke="url(#ringGrad)" stroke-width="2" fill="none" stroke-dasharray="4 6"/>
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#a855f7"/>
+              <stop offset="100%" style="stop-color:#06b6d4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="orbit-dot orbit-dot-1"></div>
+        <div class="orbit-dot orbit-dot-2"></div>
+        <div class="orbit-dot orbit-dot-3"></div>
+      </div>
+      <div class="floating-cards">
+        <div class="float-card card-1">
+          <span class="card-icon">⚡</span>
+          <span>React Dev</span>
+        </div>
+        <div class="float-card card-2">
+          <span class="card-icon">🛠️</span>
+          <span>Hardware Pro</span>
+        </div>
+        <div class="float-card card-3">
+          <span class="card-icon">🔥</span>
+          <span>Firebase</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a passionate tech enthusiast and developer based in <strong>Quetta, Pakistan</strong>. I love bridging the gap between hardware and software — whether I'm building modern web applications, optimizing PC performance, or troubleshooting complex technical systems.</p>
+          <p>My journey spans from <strong>full-stack web development</strong> (HTML, CSS, JavaScript, Firebase, and React) to hands-on hardware repairs, networking, and system installations. When I'm not writing code or working on technical projects, you can usually find me diving into cinematic PC games or experimenting with digital graphic design and automated workflows.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="h-icon">💻</span>
+              <div>
+                <strong>Full-Stack Web Dev</strong>
+                <p>React, Firebase, JavaScript &amp; more</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="h-icon">🔧</span>
+              <div>
+                <strong>Hardware &amp; Networking</strong>
+                <p>PC builds, repairs, system installs</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="h-icon">🎨</span>
+              <div>
+                <strong>Digital Design</strong>
+                <p>Graphic design &amp; automated workflows</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="code-window">
+            <div class="window-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="window-title">about.js</span>
+            </div>
+            <div class="code-body">
+              <div class="code-line"><span class="kw">const</span> <span class="var">dev</span> <span class="op">=</span> {</div>
+              <div class="code-line">&nbsp;&nbsp;<span class="key">name</span><span class="op">:</span> <span class="str">"Muhammad Yousaf Khan"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;<span class="key">location</span><span class="op">:</span> <span class="str">"Quetta, Pakistan"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;<span class="key">role</span><span class="op">:</span> <span class="str">"Full-Stack Developer"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;<span class="key">passions</span><span class="op">:</span> [</div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Web Development"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Hardware &amp; Networking"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"PC Gaming"</span>,</div>
+              <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Graphic Design"</span></div>
+              <div class="code-line">&nbsp;&nbsp;],</div>
+              <div class="code-line">&nbsp;&nbsp;<span class="key">available</span><span class="op">:</span> <span class="bool">true</span></div>
+              <div class="code-line">};</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal" data-delay="0">
+          <div class="skill-icon">🌐</div>
+          <h3>Frontend</h3>
+          <div class="skill-tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Responsive Design</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="100">
+          <div class="skill-icon">🔥</div>
+          <h3>Backend &amp; Database</h3>
+          <div class="skill-tags">
+            <span>Firebase</span><span>Node.js</span><span>REST APIs</span><span>Authentication</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="200">
+          <div class="skill-icon">🛠️</div>
+          <h3>Hardware &amp; Systems</h3>
+          <div class="skill-tags">
+            <span>PC Building</span><span>Hardware Repair</span><span>Networking</span><span>OS Installation</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="300">
+          <div class="skill-icon">🎨</div>
+          <h3>Design &amp; Automation</h3>
+          <div class="skill-tags">
+            <span>Graphic Design</span><span>Canva</span><span>Photoshop</span><span>Workflow Automation</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="400">
+          <div class="skill-icon">⚙️</div>
+          <h3>Tools &amp; DevOps</h3>
+          <div class="skill-tags">
+            <span>Git</span><span>GitHub</span><span>VS Code</span><span>npm</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" data-delay="500">
+          <div class="skill-icon">🎮</div>
+          <h3>Other Interests</h3>
+          <div class="skill-tags">
+            <span>PC Gaming</span><span>Digital Art</span><span>Tech Research</span><span>Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal" data-delay="0">
+          <div class="project-glow"></div>
+          <div class="project-tag">Web App</div>
+          <h3>Firebase Auth System</h3>
+          <p>A full-stack authentication system with real-time database, user management, and role-based access control using Firebase &amp; React.</p>
+          <div class="project-tech">
+            <span>React</span><span>Firebase</span><span>CSS3</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link" aria-label="View Project">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Demo
+            </a>
+            <a href="#" class="proj-link ghost" aria-label="View Code">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card reveal featured" data-delay="100">
+          <div class="project-glow"></div>
+          <div class="project-tag featured-tag">Featured</div>
+          <h3>Portfolio Website</h3>
+          <p>This very portfolio — a bold, animated, creative developer portfolio with particle effects, custom cursor, scroll animations &amp; responsive design.</p>
+          <div class="project-tech">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link" aria-label="View Project">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live
+            </a>
+            <a href="#" class="proj-link ghost" aria-label="View Code">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card reveal" data-delay="200">
+          <div class="project-glow"></div>
+          <div class="project-tag">Automation</div>
+          <h3>Workflow Automation Tool</h3>
+          <p>A custom desktop automation workflow built to streamline repetitive technical tasks — reducing manual effort by over 70% for system setups.</p>
+          <div class="project-tech">
+            <span>JavaScript</span><span>Node.js</span><span>Scripting</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link" aria-label="View Project">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View
+            </a>
+            <a href="#" class="proj-link ghost" aria-label="View Code">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card reveal" data-delay="300">
+          <div class="project-glow"></div>
+          <div class="project-tag">Networking</div>
+          <h3>Network Setup &amp; Config</h3>
+          <p>Designed and deployed home &amp; small-office network infrastructure — cabling, router config, DHCP, and secure Wi-Fi setup from scratch.</p>
+          <div class="project-tech">
+            <span>Networking</span><span>Hardware</span><span>Security</span>
+          </div>
+          <div class="project-links">
+            <a href="#contact" class="proj-link" aria-label="Contact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Enquire
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-desc">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <p>muhammadyousafkhan@email.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Location</strong>
+              <p>Quetta, Pakistan</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Availability</strong>
+              <p>Open to freelance &amp; full-time roles</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <p class="form-notice" id="form-notice"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">MYK<span class="accent">.</span></div>
+      <p class="footer-copy">&copy; 2026 Muhammad Yousaf Khan. Built with passion in Quetta, Pakistan.</p>
+      <a href="#hero" class="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
