@@ -11,15 +11,34 @@
   var lbImg   = document.getElementById("lightbox-img");
   var lbLoad  = document.getElementById("lb-loading");
 
-  function loadCerts() {
+  // Try data.json first (for GitHub Pages / hosted version)
+  // Fall back to localStorage (for local testing)
+  fetch("data.json?t=" + Date.now())
+    .then(function(r) {
+      if (!r.ok) throw new Error("no data.json");
+      return r.json();
+    })
+    .then(function(data) {
+      if (data && data.length > 0) {
+        render(data);
+      } else {
+        // data.json is empty, try localStorage
+        render(loadLocal());
+      }
+    })
+    .catch(function() {
+      // No data.json (local file), use localStorage
+      render(loadLocal());
+    });
+
+  function loadLocal() {
     try { return JSON.parse(localStorage.getItem(KEY)) || []; }
     catch(e) { return []; }
   }
 
-  function render() {
-    var certs = loadCerts();
+  function render(certs) {
     grid.innerHTML = "";
-    if (certs.length === 0) { emptyEl.style.display = "block"; return; }
+    if (!certs || certs.length === 0) { emptyEl.style.display = "block"; return; }
     emptyEl.style.display = "none";
     certs.forEach(function(c, i) {
       var div = document.createElement("div");
@@ -36,6 +55,7 @@
           (c.issuer ? '<div class="cert-card-issuer">' + xe(c.issuer) + '</div>' : '') +
           (c.date   ? '<div class="cert-card-date">'   + xe(c.date)   + '</div>' : '') +
         '</div>';
+
       div.querySelector(".cert-card-preview").addEventListener("click", function() {
         lbTitle.textContent  = c.title || "";
         lbImg.style.display  = "none";
@@ -55,9 +75,6 @@
   document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLB(); });
   lbImg.addEventListener("contextmenu", function(e) { e.preventDefault(); });
   function closeLB() { lightbox.classList.remove("open"); document.body.style.overflow = ""; lbImg.src = ""; }
-
   function xe(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function xa(s) { return String(s||"").replace(/"/g,"&quot;"); }
-
-  render();
 });

@@ -235,6 +235,22 @@
   }
 
   // ===== OPEN MODAL =====
+  // ===== EXPORT =====
+  var exportBtn = document.getElementById("export-btn");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function() {
+      var blob = new Blob([JSON.stringify(certs, null, 2)], { type: "application/json" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "data.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+      alert("data.json downloaded!\n\n1. Copy it to your portfolio folder\n2. Upload everything to GitHub\n3. All visitors will see your certificates!");
+    });
+  }
+
   openBtn.addEventListener("click", function() {
     editId = null; pendingImg = null;
     mTitle.textContent = "Add Certificate"; form.reset();
@@ -280,3 +296,4 @@
   function xe(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function xa(s) { return String(s||"").replace(/"/g,"&quot;"); }
 });
+
