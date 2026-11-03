@@ -672,3 +672,10 @@ body:hover .cursor { opacity: 1; }
   color: #1877f2 !important;
   box-shadow: 0 4px 16px rgba(24,119,242,0.25);
 }
+
+/* WhatsApp brand color */
+.social-btn--whatsapp:hover {
+  border-color: #25d366 !important;
+  color: #25d366 !important;
+  box-shadow: 0 4px 16px rgba(37,211,102,.25);
+}
