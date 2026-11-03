@@ -679,3 +679,43 @@ body:hover .cursor { opacity: 1; }
   color: #25d366 !important;
   box-shadow: 0 4px 16px rgba(37,211,102,.25);
 }
+
+/* ===== MYK LOGO ===== */
+.nav-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  position: relative;
+}
+.logo-m {
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.9rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(168,85,247,0.5));
+}
+.logo-yk {
+  color: #f1f5f9;
+  font-size: 1.4rem;
+  letter-spacing: -1px;
+  opacity: 0.92;
+}
+.logo-dot {
+  background: linear-gradient(135deg, #a855f7, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  line-height: 1;
+  margin-left: 1px;
+}
+.nav-brand:hover .logo-m {
+  filter: drop-shadow(0 0 14px rgba(168,85,247,0.8));
+}
