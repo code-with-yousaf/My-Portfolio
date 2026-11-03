@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Certificates</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="certificates.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- PASSWORD SCREEN -->
+  <div class="admin-lock" id="admin-lock">
+    <div class="admin-lock-box">
+      <div class="admin-lock-icon">🔐</div>
+      <h2>Admin Access</h2>
+      <p>Enter password to manage certificates</p>
+      <div class="admin-lock-form">
+        <input type="password" id="pwd-input" placeholder="Enter password" autocomplete="off" />
+        <button class="btn-primary" id="pwd-btn" style="width:100%;">Login</button>
+      </div>
+      <p class="pwd-error" id="pwd-error"></p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-panel" style="display:none;">
+
+    <nav class="navbar scrolled" id="navbar">
+      <a class="nav-brand" href="index.html">MYK<span class="accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="certificates.html" class="nav-link">Public View</a></li>
+        <li><a href="admin.html" class="nav-link active">Admin</a></li>
+      </ul>
+    </nav>
+
+    <section class="cert-hero">
+      <div class="cert-hero-inner">
+        <span class="section-tag">Admin Panel</span>
+        <h1 class="section-title" style="margin-top:12px;">Manage <span class="gradient-text">Certificates</span></h1>
+        <p style="color:var(--text-secondary);margin-top:12px;">Only you can see this page.</p>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+          <button class="btn-primary" id="open-modal-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add Certificate
+          </button>
+          <a href="certificates.html" class="btn-secondary">View Public Page</a>
+        </div>
+      </div>
+    </section>
+
+    <main class="cert-main">
+      <div class="cert-grid" id="cert-grid"></div>
+      <div class="cert-empty" id="cert-empty" style="display:none;">
+        <div class="empty-icon">🏆</div>
+        <h3>No certificates yet</h3>
+        <p>Click "Add Certificate" above to get started!</p>
+      </div>
+    </main>
+
+    <!-- ADD / EDIT MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 id="modal-title">Add Certificate</h2>
+          <button class="modal-close" id="modal-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <form id="cert-form" novalidate>
+
+          <div class="form-group">
+            <label for="cert-title">Certificate Title *</label>
+            <input type="text" id="cert-title" placeholder="e.g. AutoCAD Training Certificate" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cert-issuer">Issued By</label>
+              <input type="text" id="cert-issuer" placeholder="e.g. DigiSkills.pk" />
+            </div>
+            <div class="form-group">
+              <label for="cert-date">Year</label>
+              <input type="text" id="cert-date" placeholder="e.g. 2024" />
+            </div>
+          </div>
+
+          <!-- Upload Tabs -->
+          <div class="upload-tabs">
+            <button type="button" class="upload-tab active" data-tab="image">🖼️ Image (JPG/PNG)</button>
+            <button type="button" class="upload-tab" data-tab="pdf">📄 PDF</button>
+          </div>
+
+          <!-- Image Section -->
+          <div id="section-image">
+            <div class="drop-zone" id="img-drop-zone">
+              <div class="dz-icon">🖼️</div>
+              <p class="dz-title">Drag image here <span>or click to browse</span></p>
+              <p class="dz-hint">JPG, PNG &bull; Max 5MB</p>
+              <input type="file" id="cert-img-file" accept="image/*" style="display:none" />
+            </div>
+            <div class="file-selected" id="img-selected">
+              <span>🖼️</span>
+              <span id="img-sel-name" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.83rem;"></span>
+              <button type="button" class="file-remove" id="img-remove">✕</button>
+            </div>
+            <p id="img-edit-note" style="display:none;color:var(--text-muted);font-size:.78rem;margin-top:6px;">✓ Image already uploaded — select new or keep existing</p>
+          </div>
+
+          <!-- PDF Section -->
+          <div id="section-pdf" style="display:none;">
+            <div class="drop-zone" id="pdf-drop-zone">
+              <div class="dz-icon">📄</div>
+              <p class="dz-title">Drag PDF here <span>or click to browse</span></p>
+              <p class="dz-hint">PDF only &bull; Max 10MB</p>
+              <input type="file" id="cert-pdf-file" accept=".pdf" style="display:none" />
+            </div>
+            <div class="file-selected" id="pdf-selected">
+              <span>📄</span>
+              <span id="pdf-sel-name" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.83rem;"></span>
+              <button type="button" class="file-remove" id="pdf-remove">✕</button>
+            </div>
+            <p id="pdf-edit-note" style="display:none;color:var(--text-muted);font-size:.78rem;margin-top:6px;">✓ PDF already uploaded — select new or keep existing</p>
+          </div>
+
+          <p class="form-error" id="form-error" style="margin-top:12px;"></p>
+          <div class="modal-footer">
+            <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+            <button type="submit" class="btn-primary"><span id="save-btn-text">Save Certificate</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="cert-lightbox" id="cert-lightbox">
+      <div class="cert-lightbox-backdrop" id="lightbox-backdrop"></div>
+      <div class="cert-lightbox-box">
+        <div class="cert-lightbox-header">
+          <span class="cert-lightbox-title" id="lightbox-title"></span>
+          <button class="cert-lightbox-close" id="lightbox-close" aria-label="Close">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="cert-lightbox-body">
+          <img id="lightbox-img" src="" alt="certificate" style="max-width:100%;height:auto;border-radius:8px;pointer-events:none;" />
+          <canvas id="lightbox-canvas" style="display:none;max-width:100%;border-radius:8px;"></canvas>
+          <div id="lb-loading" style="display:none;flex-direction:column;align-items:center;gap:16px;padding:60px 20px;color:#64748b;font-size:.88rem;">
+            <div class="lb-spinner"></div><span>Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Save Notice -->
+    <div id="save-notice" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;background:#0d0d1a;border:1px solid rgba(168,85,247,.4);border-radius:14px;padding:16px 24px;max-width:480px;width:90%;box-shadow:0 8px 40px rgba(0,0,0,.5);">
+      <p style="color:#f1f5f9;font-weight:600;margin-bottom:6px;">✅ Certificate saved! Now update your portfolio:</p>
+      <ol style="color:#94a3b8;font-size:.85rem;padding-left:18px;line-height:1.8;margin:0;">
+        <li><strong style="color:#a855f7;">data.json</strong> downloaded to your Downloads folder</li>
+        <li>Replace old <code style="background:rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;">data.json</code> in your portfolio folder</li>
+        <li>Upload all files to GitHub — certificates will show for everyone!</li>
+      </ol>
+    </div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>if(typeof pdfjsLib!=="undefined"){pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";}</script>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
+
