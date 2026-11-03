@@ -11,23 +11,19 @@
   var lbImg   = document.getElementById("lightbox-img");
   var lbLoad  = document.getElementById("lb-loading");
 
-  // Try data.json first (for GitHub Pages / hosted version)
-  // Fall back to localStorage (for local testing)
+  // Show skeletons immediately while loading
+  showSkeletons(6);
+
+  // Try data.json first (GitHub Pages), fallback to localStorage
   fetch("data.json?t=" + Date.now())
     .then(function(r) {
       if (!r.ok) throw new Error("no data.json");
       return r.json();
     })
     .then(function(data) {
-      if (data && data.length > 0) {
-        render(data);
-      } else {
-        // data.json is empty, try localStorage
-        render(loadLocal());
-      }
+      render((data && data.length > 0) ? data : loadLocal());
     })
     .catch(function() {
-      // No data.json (local file), use localStorage
       render(loadLocal());
     });
 
@@ -36,19 +32,40 @@
     catch(e) { return []; }
   }
 
+  function showSkeletons(n) {
+    grid.innerHTML = "";
+    for (var i = 0; i < n; i++) {
+      var sk = document.createElement("div");
+      sk.className = "cert-card cert-skeleton";
+      sk.innerHTML =
+        '<div class="cert-card-preview skel-preview"></div>' +
+        '<div class="cert-card-body">' +
+          '<div class="skel-line skel-title"></div>' +
+          '<div class="skel-line skel-sub"></div>' +
+        '</div>';
+      grid.appendChild(sk);
+    }
+  }
+
   function render(certs) {
     grid.innerHTML = "";
-    if (!certs || certs.length === 0) { emptyEl.style.display = "block"; return; }
+    if (!certs || certs.length === 0) {
+      emptyEl.style.display = "block"; return;
+    }
     emptyEl.style.display = "none";
+
     certs.forEach(function(c, i) {
       var div = document.createElement("div");
       div.className = "cert-card reveal";
-      div.style.animationDelay = (i * 80) + "ms";
+      div.style.animationDelay = (i * 60) + "ms";
+
       div.innerHTML =
         '<div class="cert-card-preview" style="cursor:pointer;">' +
-          (c.img
-            ? '<img class="cert-thumb-img" src="' + c.img + '" alt="' + xa(c.title) + '" />'
-            : '<div class="cert-no-thumb"><div class="big-emoji">🏆</div><span>Certificate</span></div>') +
+          '<div class="cert-img-wrap">' +
+            (c.img
+              ? '<img class="cert-thumb-img" loading="lazy" src="' + c.img + '" alt="' + xa(c.title) + '" />'
+              : '<div class="cert-no-thumb"><div class="big-emoji">🏆</div><span>Certificate</span></div>') +
+          '</div>' +
         '</div>' +
         '<div class="cert-card-body">' +
           '<div class="cert-card-title">' + xe(c.title) + '</div>' +
@@ -66,6 +83,7 @@
         lbImg.onerror = function() { lbLoad.style.display = "none"; };
         lbImg.src = c.img || "";
       });
+
       grid.appendChild(div);
     });
   }
@@ -74,7 +92,12 @@
   lbBack.addEventListener("click",  closeLB);
   document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLB(); });
   lbImg.addEventListener("contextmenu", function(e) { e.preventDefault(); });
-  function closeLB() { lightbox.classList.remove("open"); document.body.style.overflow = ""; lbImg.src = ""; }
+  function closeLB() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+    lbImg.src = "";
+  }
+
   function xe(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
   function xa(s) { return String(s||"").replace(/"/g,"&quot;"); }
 });
