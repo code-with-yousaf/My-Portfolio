@@ -27,10 +27,3 @@ Here are a few projects I've built and deployed:
 ## 📱 Connect With Me
 
 * **Location:** Quetta, Pakistan
-* **Business / Services:** Zarghon Mobile Repairing & Softwares
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
