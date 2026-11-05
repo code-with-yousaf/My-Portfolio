@@ -683,6 +683,13 @@ body:hover .cursor { opacity: 1; }
   box-shadow: 0 4px 16px rgba(37,211,102,.25);
 }
 
+/* GitHub brand color */
+.social-btn--github:hover {
+  border-color: #f0f6fc !important;
+  color: #f0f6fc !important;
+  box-shadow: 0 4px 16px rgba(240,246,252,0.2);
+}
+
 /* ===== MYK LOGO ===== */
 .nav-brand {
   font-family: 'Space Grotesk', sans-serif;
