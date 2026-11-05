@@ -156,33 +156,8 @@ body:hover .cursor { opacity: 1; }
 .section-desc { color: var(--text-secondary); margin-top: 12px; font-size: 1rem; }
 
 /* ===== REVEAL ANIMATION ===== */
-/* Motion.js handles .section-header, .about-text, .about-visual, .skill-card, .project-card, .contact-info, .contact-form, .highlight-item, .footer */
-/* Legacy reveal keeps working for any remaining .reveal elements */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Disable conflicting CSS keyframe animations on items Motion.js now owns */
-.hero-title .line-1,
-.hero-title .line-2 {
-  animation: none !important;
-  opacity: 0;
-}
-.hero-badge {
-  animation: none !important;
-  opacity: 0;
-}
-.hero-subtitle,
-.hero-location,
-.hero-desc,
-.hero-cta,
-.hero-stats {
-  animation: none !important;
-  opacity: 0;
-}
-.hero-visual {
-  animation: none !important;
-  opacity: 0;
-}
 
 /* ===== HERO ===== */
 .hero {
